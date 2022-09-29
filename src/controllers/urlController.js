@@ -28,8 +28,6 @@ const createUrl = async function (req, res) {
     if(findurl){
         return res.status(400).sens({status:false, message:"url already present"})
     }
-
-
     const urlCode = shortid.generate()
 
    const savedata = {
