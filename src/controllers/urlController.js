@@ -22,12 +22,14 @@ const createUrl = async function (req, res) {
             return res.status(400).send({status:false, message:"please provide only longurl "})
         }
 
-         if (!longurl.match(urlRegex)){
+        
+        if (!isValid(longurl)) {
+            return res.status(400).send({ status: false, message: "longurl is required" })
+        }
+
+        if (!longurl.match(urlRegex)){
             return res.status(400).send({status:false, message:"invalid Url"})
          }
-        if (!isValid(longurl)) {
-            return res.status(400).send({ status: false, message: "longUrl is required" })
-        }
 
         if (!validUrl.isUri(longurl)) {
             return res.status(400).send({ status: false, message: "invalid url" })
